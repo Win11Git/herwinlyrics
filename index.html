@@ -91,7 +91,7 @@
         width: 45px;
     }
 
-    .song{
+.song{
         position: relative;
         overflow-x: scroll;
         overflow-y: hidden;
@@ -281,6 +281,101 @@
     background-color: #c2bdbd;
 }
 
+@media (max-width: 768px) {
+    /* Make top nav inputs/buttons flow instead of absolute so they fit small screens */
+    .top{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 10px;
+        padding: 8px 10px;
+    }
+
+    .top input{
+        position: relative;
+        left: 0;
+        bottom: 0;
+        padding: 10px 12px;
+        background-color: #000000;
+        border-radius: 5px;
+        width: calc(100% - 120px);
+        max-width: none;
+    }
+
+    .top button{
+        position: relative;
+        right: 0;
+        top: 0;
+        padding: 10px 14px;
+        border-radius: 5px;
+        margin-left: 0;
+    }
+
+    #profile{
+        position: relative;
+        right: 0;
+        top: 0;
+        margin-left: 6px;
+        height: 40px;
+        width: 40px;
+    }
+
+    /* Make song sections stack and images scale */
+    .song{
+        height: auto;
+        overflow-x: hidden;
+        margin-top: 20px;
+        padding: 12px;
+    }
+
+    .tab{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 12px;
+        left: 0;
+        top: 0;
+    }
+
+    .th{
+        width: calc(50% - 12px);
+        padding: 8px;
+        box-sizing: border-box;
+        left: 0;
+        top: 0;
+    }
+
+    .th img{ 
+        width: 100%;
+        height: auto;
+    }
+
+    h1{
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        font-size: 1.1rem;
+    }
+
+    .top input[type="Search"]{
+        width: auto;
+        padding: 8px;
+    }
+
+    /* show play button more clearly on small screens */
+    #playbutton{
+        opacity: 1;
+        background-size: 40px !important;
+        background-position: center !important;
+    }
+}
+
+@media (max-width: 420px) {
+    /* single-column thumbnails on very small screens */
+    .th{ width: 100%; }
+    .top input{ width: calc(100% - 90px); }
+}
+
 </style>
 
 </head>
@@ -288,7 +383,7 @@
 
     <nav>
         <ul>
-            <li><a href="music.html"><font color="white" size="6px"><b>HerwinLyrics</b></font> </a></li>
+            <li><a href="index.html"><font color="white" size="6px"><b>HerwinLyrics</b></font> </a></li>
 
         </ul>
         <div class="top">
