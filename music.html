@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HerwinLyrics</title>
+    <link rel="icon" href="herwinlyrics.png">
+   
+
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(8, 8, 8);
+        padding-bottom: 5px;
+        padding-top: 5%;
+    }
+
+    nav{
+        position: fixed;
+        left: 0;
+        top:0;
+        width: 100%;
+        background-color: rgb(1, 46, 35);
+        z-index: 5;
+    }
+
+    nav ul li{
+    display: inline-block;
+    }
+
+    ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    }
+
+    nav ul li a{
+    display: block;
+    color: white;
+    padding: 15px 10px;
+    text-decoration: none;
+    margin-left: 30px;
+    }
+
+    .top{
+    display:inline-block;
+    margin-left: 50px;
+    border-radius: 100px;
+    }
+
+    .top input{
+    position: absolute;
+    left:250px;
+    bottom: 10px;
+    display:inline-block;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 300px;
+    }
+
+    .top button {
+    position: absolute;
+    right: 110px;
+    top: 19px;
+    color: white;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding:12px 40px;
+    cursor: pointer;
+    }
+
+    .top input[type="Search" ]{
+    width: 845px;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    color:white;
+    }
+
+    #profile{
+        background: transparent;
+        position: absolute;
+        right:-80px;
+        top: -7px;
+        border: none;
+        height: 45px;
+        width: 45px;
+    }
+
+    .song{
+        position: relative;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 100%;
+        height: 450px;
+        border-radius: 20px;
+        top:100px;
+        left:0;
+        bottom:50px;
+    font-size: 16px;
+    background: rgb(27, 27, 27);
+    margin-top: -70px;
+    margin-bottom: 7%;
+    display: inline-block;
+    
+    }
+
+
+    .th{
+        top: 21%;
+        left: 30px;
+        border-radius: 10px;
+        padding: 20px;
+        background-size: 2px;
+        background: transparent;
+        width: 200px;
+        height: auto; 
+        position: relative; 
+         display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+    .th1{
+        top: 21%;
+        left: 30px;
+        border-radius: 10px;
+        padding: 20px;
+        background-size: 2px;
+        background: transparent;
+        width: 200px;
+        height: auto; 
+        position: relative; 
+         display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+   
+    #links{
+        text-decoration: none;
+    }
+    .tab{
+        position: relative; 
+        left: 1px;
+        top: 50px;
+        display: flex; 
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    h1{
+        position: absolute;
+        top:5px;
+        margin-left: 20px;
+        color: white;
+    }
+    img{
+        display: block;
+        border-radius: 7px;
+    }
+    #playbutton{
+        background-color: transparent;
+        background-image: url(play.png);
+        background-position: 173px 180px;
+        background-repeat: no-repeat;
+        border: none;
+        background-size: 50px;
+        border-radius: 10px;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        position: absolute;
+        left:1px;
+        top: 1px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
+    #playbutton:hover{
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        opacity: 1;
+    }
+    .th:hover{
+        background: #292626;
+    }
+
+    .song::-webkit-scrollbar {
+    width: 12px; 
+}
+
+.song::-webkit-scrollbar-track {
+    background:rgb(27, 27, 27); 
+    border-radius: 6px;
+}
+
+.song::-webkit-scrollbar-thumb {
+    background: #494949; 
+    border-radius: 6px;
+}
+
+.song::-webkit-scrollbar-thumb:hover {
+    background: #8f8f8f; 
+}
+
+
+#playbutton img {
+    border-radius: 7px;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+   
+.search-results {
+        position: relative;
+        margin-top: 20px;
+        background-color: rgb(27, 27, 27);
+        border-radius: 20px;
+        padding: 20px;
+        padding-bottom: 100px;
+        color: white;
+    }
+
+    .search-results h1 {
+        margin-bottom: 20px;
+    }
+
+    .search-results .tab {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .search-results .th {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+    right: 20px;
+    top : 60px;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a:hover{
+    background-color: #c2bdbd;
+}
+
+</style>
+
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="music.html"><font color="white" size="6px"><b>HerwinLyrics</b></font> </a></li>
+
+        </ul>
+        <div class="top">
+            <input type="search" value="" placeholder="Search" id="search"  >
+            <div class="dropdown">
+            <button class="dropbtn"><img src="herwinlyrics.png" alt="profile" id="profile"></button>
+                <div class="dropdown-content">
+                  <a  class="prof" onclick="myProfile()">Profile</a>
+                  <a    class="logout" onclick="myFunction()">Log Out </a>
+                </div>
+              </div>
+            <button type="logout" onclick="openPage()">Search</button>
+            
+        </div>
+    </nav>
+
+    <div class="search-results" id="search-results" style="display: none;">
+        <h1>Search Results</h1>
+        <div class="tab" id="results-tab">
+        </div>
+    </div>
+    
+ <div class="song"> 
+    <h1>Songs</h1>
+    <div class="tab">
+        
+
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+        
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+        
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+        
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+        
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>
+        
+    <div class="th">
+        <a id="links" href="Sa'yo Lang.html"><img src="https://files.catbox.moe/wyjjsa.png" alt="Sa'yo Lang" height="200"><font size="4" color="white"><b><br>Sa'yo Lang<br></font><font size="4" color="gray" >AI Generated</font></b><br>
+                <button id="playbutton">  </button> </a> 
+        </div>        
+    </div>
+</div>
+
+<div class="song"> 
+<h1>Hev Abi</h1>
+    <div class="tab">
+        
+
+    <div class="th">
+    <a id="links" href="alam mo ba girl.html"><img src="songs/Alam mo ba girl.jpg" alt="alam mo ba girl" height="200"><font size="4" color="white"><b><br>Alam Mo Ba Girl<br></font><font size="4" color="gray" >Hev Abi</font></b><br>
+                <button id="playbutton">  </button> </a> 
+    </div>
+
+    <div class="th">
+        <a id="links" href="babaero.html"><img src="songs/Babaero.jpeg" alt="babaero" height="200"><font size="4" color="white"><b><br>Babaero<br></font><font size="4" color="gray" >gins&melodies, Hev Abi</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Para sa street.html"><img src="songs/Para sa street.jpeg" alt="para sa street" height="200"><font size="4" color="white"><b><br>Para Sa Streets<br></font><font size="4" color="gray" >Hev Abi</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+    
+
+    <div class="th">
+        <a id="links" href="Lil Kasalanan.html"><img src="songs/Lil Kasalanan.jpeg" alt="lil kasalanan" height="200"><font size="4" color="white"><b><br>Lil Kasalanan Shortie<br></font><font size="4" color="gray" >Hev Abi</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+     <div class="th">
+        <a id="links" href="Welcome2dtq.html"><img src="songs/welcome2dtq.jpeg" alt="welcome2dtq" height="200"><font size="4" color="white"><b><br>WELCOME2DTQ<br></font><font size="4" color="gray" >Hev Abi</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="walang alam.html"><img src="songs/walang alam.jpeg" alt="walang alam" height="200"><font size="4" color="white"><b><br>Walang Alam<br></font><font size="4" color="gray" >Hev Abi</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="subomoto.html"><img src="songs/Subomoto.jpeg" alt="subomoto" height="200"><font size="4" color="white"><b><br>SuboMoto<br></font><font size="4" color="gray" > Zae, Hev Abi</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>        
+    </div>
+</div>
+
+<div class="song"> 
+    <h1>Taylor Swift</h1>
+    <div class="tab">
+        
+
+    <div class="th">
+    <a id="links" href="August.html"><img src="songs/August.jpeg" alt="august" height="200"><font size="4" color="white"><b><br>August<br></font><font size="4" color="gray" >Taylor Swift</font></b><br>
+                <button id="playbutton">  </button> </a> 
+    </div>
+
+    <div class="th">
+        <a id="links" href="love story.html"><img src="songs/love story.jpeg" alt="love story" height="200"><font size="4" color="white"><b><br>Love Story (Taylor's Version)<br></font><font size="4" color="gray" >Taylor Swift</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="look what you made me do.html"><img src="songs/look what you made me do.jpeg" alt="look what you made me do" height="200"><font size="4" color="white"><b><br>Look What You Made Me Do<br></font><font size="4" color="gray" >Taylor Swift</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+    
+
+    <div class="th">
+        <a id="links" href="wildest dream.html"><img src="songs/wildest dream.jpeg" alt="wildest dream" height="200"><font size="4" color="white"><b><br>Wildest Dream (Taylor's Version)<br></font><font size="4" color="gray" >Taylor Swift</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+     <div class="th">
+        <a id="links" href="all too well.html"><img src="songs/All too well.jpeg" alt="all too well" height="200"><font size="4" color="white"><b><br>All Too Well<br></font><font size="4" color="gray" >Taylor Swift</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="fortnight.html"><img src="songs/Fortnight.jpeg" alt="fortnight" height="200"><font size="4" color="white"><b><br>Fortnight<br></font><font size="4" color="gray" >Taylor Swift, Post Malone</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="lover.html"><img src="songs/lover.jpeg" alt="lover" height="200"><font size="4" color="white"><b><br>Lover<br></font><font size="4" color="gray" >Taylor Swift</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>        
+    </div>
+</div>
+
+<div class="song"> 
+    <h1>Justin Bieber</h1>
+    <div class="tab">
+        
+
+    <div class="th">
+        <a id="links" href="sorry.html"><img src="songs/Sorry.jpeg" alt="sorry" height="200"><font size="4" color="white"><b><br>Sorry<br></font><font size="4" color="gray" >Justin Bieber</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Stay.html"><img src="songs/Stay.jpeg" alt="Stay" height="200"><font size="4" color="white"><b><br>Stay<br></font><font size="4" color="gray" >The Kid LAROI, Justin Bieber</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Snooze.html"><img src="songs/Snooze (Acoustic) (feat. Justin Bieber).jpeg" alt="snooze" height="200"><font size="4" color="white"><b><br>Snooze (Acoustic)<br></font><font size="4" color="gray" >SZA, Justin Bieber</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Intention.html"><img src="songs/Intention.jpeg" alt="Intention" height="200"><font size="4" color="white"><b><br>Intention<br></font><font size="4" color="gray" >Justin Bieber, Quavo</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+     <div class="th">
+        <a id="links" href="what do you mean.html"><img src="songs/what do you mean.jpeg" alt="what do you mean" height="200"><font size="4" color="white"><b><br>What Do You Mean?<br></font><font size="4" color="gray" >Justin Bieber</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Ghost.html"><img src="songs/Ghost.jpeg" alt="Ghost" height="200"><font size="4" color="white"><b><br>Ghost<br></font><font size="4" color="gray" >Justin Bieber</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="hold on.html"><img src="songs/hold on.jpeg" alt="hold on" height="200"><font size="4" color="white"><b><br>Hold On<br></font><font size="4" color="gray" >Justin Bieber</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>        
+    </div>
+</div>
+
+<div class="song"> 
+    <h1>Dionela</h1>
+    <div class="tab">
+     
+        
+    <div class="th">
+        <a id="links" href="sining.html"><img src="songs/sining.jpeg" alt="sining" height="200"><font size="4" color="white"><b><br>Sining<br></font><font size="4" color="gray" >Dionela, Jay R</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Marilag.html"><img src="songs/Marilag.jpeg" alt="marilag" height="200"><font size="4" color="white"><b><br>Marilag<br></font><font size="4" color="gray" >Dionela</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Oksihina.html"><img src="songs/oksihina.jpeg" alt="oksihina" height="200"><font size="4" color="white"><b><br>Oksihina<br></font><font size="4" color="gray" >Dionela</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Musika.html"><img src="songs/Musika.jpeg" alt="Musika" height="200"><font size="4" color="white"><b><br>Musika<br></font><font size="4" color="gray" >Dionela</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="hoodie.html"><img src="songs/hoodie.jpeg" alt="hoodie" height="200"><font size="4" color="white"><b><br>Hoodie<br></font><font size="4" color="gray" >Dionela, Alisson Shore</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+     <div class="th">
+        <a id="links" href="153.html"><img src="songs/153.jpeg" alt="153" height="200"><font size="4" color="white"><b><br>153<br></font><font size="4" color="gray" >Dionela</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Langit.html"><img src="songs/Langit.jpeg" alt="Langit" height="200"><font size="4" color="white"><b><br>Langit<br></font><font size="4" color="gray" >Dionela</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>        
+    </div>
+</div>
+
+<div class="song"> 
+    <h1>Adie</h1>
+    <div class="tab">
+     
+        
+    <div class="th">
+        <a id="links" href="Paraluman.html"><img src="songs/Paraluman.jpeg" alt="Paraluman" height="200"><font size="4" color="white"><b><br>Paraluman<br></font><font size="4" color="gray" >Adie</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Mahika.html"><img src="songs/Mahika.jpeg" alt="mahika" height="200"><font size="4" color="white"><b><br>Mahika<br></font><font size="4" color="gray" >Adie, Janine Berdin</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="paumanhin.html"><img src="songs/Paumanhin.jpeg" alt="paumanhin" height="200"><font size="4" color="white"><b><br>Paumanhin<br></font><font size="4" color="gray" >Adie, Flow G</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="Luha.html"><img src="songs/Luha.jpeg" alt="Luha" height="200"><font size="4" color="white"><b><br>Luha<br></font><font size="4" color="gray" >Adie</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="tahanan.html"><img src="songs/Tahanan.jpeg" alt="tahanan" height="200"><font size="4" color="white"><b><br>Tahanan<br></font><font size="4" color="gray" >Adie</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+     <div class="th">
+        <a id="links" href="oh giliw.html"><img src="songs/oh giliw.jpeg" alt="oh giliw" height="200"><font size="4" color="white"><b><br>Oh, Giliw<br></font><font size="4" color="gray" >Adie</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>
+
+    <div class="th">
+        <a id="links" href="kursunada.html"><img src="songs/Kursunada.jpeg" alt="kursunada" height="200"><font size="4" color="white"><b><br>Kursunada<br></font><font size="4" color="gray" >Adie</font></b><br>
+                    <button id="playbutton">  </button> </a> 
+        </div>        
+    </div>
+</div>
+<br>
+
+<script>    
+    function myFunction(){
+
+if( confirm ("Do you want to log out?") == true){
+window.location.href ="Login Form.html";
+}
+
+} 
+
+function myProfile(){
+    if( confirm ("Do you want to go Profile?") == true){
+window.location.href ="Profile.html";
+}
+}
+</script>
+
+<script>
+    function openPage() {
+        const query = document.getElementById("search").value.toLowerCase();
+        const songs = document.querySelectorAll('.th');
+        const resultsContainer = document.getElementById("search-results");
+        const resultsTab = document.getElementById("results-tab");
+
+        resultsTab.innerHTML = "";
+        let found = false;
+
+        if (query.trim() === "") {
+            resultsContainer.style.display = "none";
+            songs.forEach(song => song.style.display = "flex");
+            return;
+        }
+       
+
+        songs.forEach(song => {
+            const title = song.querySelector('b').textContent.toLowerCase();
+            const artist = song.querySelector('font[color="gray"]').textContent.toLowerCase();
+            
+
+            if (title.includes(query) || artist.includes(query)) {
+                const clonedSong = song.cloneNode(true); 
+                resultsTab.appendChild(clonedSong); 
+                found = true;
+            }
+        });
+
+        if (found) {
+            resultsContainer.style.display = "block"; 
+           window.location.href="#search-results"
+        } else {
+           
+        }
+    }
+</script>
+
+</body>
+</html>
