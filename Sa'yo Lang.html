@@ -644,7 +644,7 @@
 
         position: absolute;
 
-        top: 130px;
+        top: 100px;
 
         left: 0;
 
@@ -654,7 +654,11 @@
 
         margin: 0;
 
-        padding: 30px 28px;
+        padding: 10px 28px;
+
+        padding-bottom: 100vh;
+
+        box-sizing: border-box;
 
         color: #d8d8d8;
 
@@ -1325,7 +1329,8 @@
 
                 <img
                     src="https://files.catbox.moe/wyjjsa.png"
-                    height="160" crossorigin="anonymous"
+                    height="160"
+                    crossorigin="anonymous"
                 >
 
 
@@ -1353,7 +1358,8 @@
 
                 <audio
                     id="audioplayer"
-                    src="https://files.catbox.moe/jaxte8.mp3" crossorigin="anonymous"
+                    src="https://files.catbox.moe/jaxte8.mp3"
+                    prelaod="metadata" crossorigin="anonymous"
                 >
                 </audio>
 
@@ -1613,37 +1619,40 @@
             lyricLines[activeIndex];
 
 
-        if (activeLine) {
+            if (activeLine) {
 
-            const targetScroll =
-                Math.max(
-                    0,
-                    Math.min(
-                        activeLine.offsetTop - 80,
-                        lyricsDisplay.scrollHeight -
-                        lyricsDisplay.clientHeight
-                    )
-                );
+        const containerRect =
+            lyricsDisplay.getBoundingClientRect();
 
+        const lineRect =
+            activeLine.getBoundingClientRect();
 
-            if (
-                Math.abs(
-                    lyricsDisplay.scrollTop -
-                    targetScroll
-                ) > 8
-            ) {
+        const linePosition =
+            lineRect.top -
+            containerRect.top +
+            lyricsDisplay.scrollTop;
 
-                lyricsDisplay.scrollTo({
+        const targetScroll =
+            Math.max(
+                0,
+                linePosition - 50
+            );
 
-                    top: targetScroll,
+        if (
+            Math.abs(
+                lyricsDisplay.scrollTop -
+                targetScroll
+            ) > 8
+        ) {
 
-                    behavior: "smooth"
-
-                });
-
-            }
+            lyricsDisplay.scrollTo({
+                top: targetScroll,
+                behavior: "smooth"
+            });
 
         }
+    }
+
 
     }
 
@@ -1752,7 +1761,7 @@
                 `url(${playIcon})`;
 
             window.location.href =
-                "Paraluman.html";
+                "Where I Belong.html";
 
         }
     );
