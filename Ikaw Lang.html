@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HerwinLyrics</title>
+
+    <link rel="icon" href="herwinlyrics.png">
+
+
+<style>
+
+    /* ==============================
+       BASIC RESPONSIVE SETTINGS
+    ============================== */
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body{
+        display: flex;
+        flex-direction: column;
+
+        background-color: rgb(8, 8, 8);
+
+        padding-bottom: 5px;
+        padding-top: 80px;
+
+        margin: 0;
+
+        width: 100%;
+        min-height: 100vh;
+
+        overflow-x: hidden;
+    }
+
+
+    /* ==============================
+       NAVBAR
+    ============================== */
+
+    nav{
+        position: fixed;
+
+        left: 0;
+        top: 0;
+
+        width: 100%;
+
+        min-height: 60px;
+
+        background-color: rgb(1, 46, 35);
+
+        z-index: 5;
+
+        opacity: 0.8;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 5px 20px;
+    }
+
+
+    nav ul{
+        list-style-type: none;
+
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+
+        align-items: center;
+    }
+
+
+    nav ul li{
+        display: inline-block;
+    }
+
+
+    nav ul li a{
+        display: block;
+
+        color: white;
+
+        padding: 10px;
+
+        text-decoration: none;
+
+        position: static;
+    }
+
+
+    /* ==============================
+       PROFILE
+    ============================== */
+
+    #profile{
+        background: transparent;
+
+        position: relative;
+
+        left: auto;
+        top: auto;
+
+        border: none;
+
+        height: 45px;
+        width: 45px;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+
+        display: block;
+    }
+
+
+    .top{
+        display: inline-block;
+
+        margin-left: auto;
+
+        border-radius: 100px;
+    }
+
+
+    .top button {
+        position: static;
+
+        color: white;
+
+        background-color: transparent;
+
+        border: none;
+
+        border-radius: 5px;
+
+        padding: 5px;
+
+        cursor: pointer;
+    }
+
+
+    .dropdown {
+        float: none;
+
+        position: relative;
+
+        overflow: visible;
+    }
+
+
+    .dropdown .dropbtn {
+        font-size: 16px;
+
+        border: none;
+
+        outline: none;
+
+        color: white;
+
+        padding: 5px;
+
+        background-color: inherit;
+
+        font-family: inherit;
+
+        margin: 0;
+
+        cursor: pointer;
+    }
+
+
+    .dropdown-content {
+
+        right: 0;
+
+        top: 55px;
+
+        display: none;
+
+        position: absolute;
+
+        background-color: #f9f9f9;
+
+        min-width: 160px;
+
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+        z-index: 10;
+
+        border-radius: 5px;
+
+        overflow: hidden;
+    }
+
+
+    .dropdown-content a {
+
+        float: none;
+
+        color: black;
+
+        padding: 12px 16px;
+
+        text-decoration: none;
+
+        display: block;
+
+        text-align: left;
+
+        cursor: pointer;
+    }
+
+
+    .dropdown:hover .dropdown-content {
+
+        display: block;
+    }
+
+
+    .dropdown-content a:hover{
+
+        background-color: #c2bdbd;
+    }
+
+
+    /* ==============================
+       SONG CARD
+    ============================== */
+
+    .song{
+
+        position: relative;
+
+        width: 90%;
+
+        max-width: 1200px;
+
+        min-height: 200px;
+
+        height: 200px;
+
+        top: auto;
+
+        bottom: auto;
+
+        left: auto;
+
+        margin: 10px auto 100px;
+
+        border-radius: 20px;
+
+        font-size: 16px;
+
+        background: rgba(100, 98, 96, 0.61);
+
+        padding: 20px;
+
+        display: flex;
+
+        align-items: center;
+    }
+
+
+    /* ==============================
+       SONG CONTENT
+    ============================== */
+
+    .tab{
+
+        position: relative;
+
+        left: auto;
+
+        top: auto;
+
+        display: flex;
+
+        gap: 20px;
+
+        margin: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        align-items: center;
+    }
+
+
+    .th{
+
+        position: relative;
+
+        top: auto;
+
+        left: auto;
+
+        border-radius: 10px;
+
+        padding: 0;
+
+        background-size: 2px;
+
+        background: transparent;
+
+        width: 100%;
+
+        height: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        justify-content: center;
+    }
+
+
+    /* ==============================
+       ALBUM IMAGE
+    ============================== */
+
+    img{
+
+        position: relative;
+
+        left: auto;
+
+        border-radius: 7px;
+
+        max-width: 100%;
+
+        height: auto;
+    }
+
+
+    .song .th > img {
+
+        width: 160px;
+
+        height: 160px;
+
+        object-fit: cover;
+
+        flex-shrink: 0;
+    }
+
+
+    /* ==============================
+       SONG TITLE
+    ============================== */
+
+    h1{
+
+        position: relative;
+
+        left: auto;
+
+        top: auto;
+
+        color: white;
+
+        margin: 0;
+        font-size: clamp(35px, 6vw, 70px);
+    }
+
+
+    h2{
+
+        position: relative;
+
+        left: auto;
+
+        top: auto;
+
+        color: white;
+
+        margin: 0;
+    }
+
+
+    #title{
+
+        position: absolute;
+
+        font-size: clamp(35px, 6vw, 70px);
+
+        top: 15px;
+
+        left: 185px;
+
+        color: white;
+
+        margin: 0;
+
+        line-height: 1.1;
+
+        white-space: nowrap;
+    }
+
+
+    #overview{
+
+        position: absolute;
+
+        top: 100px;
+
+        left: 185px;
+
+        font-size: clamp(14px, 2vw, 20px);
+
+        color: rgb(0, 0, 0);
+
+        margin: 0;
+
+        white-space: nowrap;
+    }
+
+
+    p{
+
+        position: absolute;
+
+        font-family:'Courier New', Courier, monospace;
+
+        color: rgb(199, 194, 194);
+
+        font-size: x-large;
+
+        top: 50px;
+
+        left: 50px;
+    }
+
+
+    #prof{
+
+        position: absolute;
+
+        left: 210px;
+
+        top: 150px;
+
+        border-radius: 100%;
+    }
+
+
+    /* ==============================
+       PLAY BUTTON
+    ============================== */
+
+    #playbutton{
+
+        background-color: transparent;
+
+        background-image: url(play.png);
+
+        background-position: center;
+
+        background-repeat: no-repeat;
+
+        border: none;
+
+        background-size: contain;
+
+        border-radius: 100%;
+
+        height: clamp(70px, 10vw, 120px);
+
+        width: clamp(70px, 10vw, 120px);
+
+        position: absolute;
+
+        right: 20px;
+
+        top: 20px;
+
+        cursor: pointer;
+
+        transition: transform 0.3s ease,
+                    box-shadow 0.3s ease;
+    }
+
+
+    #playbutton:hover{
+
+        transform: translateY(-5px);
+    }
+
+
+    /* ==============================
+       PROGRESS BAR
+    ============================== */
+
+    #progress{
+
+        position: absolute;
+
+        top: auto;
+
+        bottom: 20px;
+
+        right: 170px;
+
+        width: 100%;
+
+        max-width: 500px;
+
+        cursor: pointer;
+    }
+
+
+    /* ==============================
+       LYRICS CARD
+    ============================== */
+
+    .song1{
+
+        position: relative;
+
+        align-items: center;
+
+        width: 70%;
+
+        max-width: 1100px;
+
+        min-height: 800px;
+
+        height: 800px;
+
+        top: auto;
+
+        bottom: auto;
+
+        left: auto;
+
+        border-radius: 20px;
+
+        font-size: 16px;
+
+        background-image:
+            linear-gradient(
+                rgb(133, 127, 116),
+                rgb(0, 0, 0)
+            );
+
+        padding: 20px;
+
+        margin: 0 auto 80px;
+
+        overflow: hidden;
+    }
+
+
+    .song1 .tab {
+
+        width: 100%;
+
+        height: 100%;
+
+        display: block;
+
+        margin: 0;
+
+        padding: 0;
+    }
+
+
+    .song1 .th {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: 100%;
+
+        align-items: stretch;
+
+        display: block;
+
+        position: relative;
+    }
+
+
+    /* ==============================
+       LYRICS TITLE
+    ============================== */
+
+    #Lyrics{
+
+        position: absolute;
+
+        top: 0;
+
+        left: 20px;
+
+        color: white;
+
+        margin: 0;
+
+        font-size: clamp(25px, 4vw, 40px);
+    }
+
+
+    #Title{
+
+        position: absolute;
+
+        top: 60px;
+
+        left: 50px;
+
+        color: white;
+
+        margin: 0;
+
+        font-size: clamp(20px, 3vw, 30px);
+    }
+
+
+    /* ==============================
+       LYRICS DISPLAY
+    ============================== */
+
+    #lyricsDisplay {
+
+        position: absolute;
+
+        top: 100px;
+
+        left: 0;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        margin: 0;
+
+        padding: 10px 28px;
+
+        padding-bottom: 100vh;
+
+        box-sizing: border-box;
+
+        color: #d8d8d8;
+
+        font-family: 'Courier New', Courier, monospace;
+
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
+
+        line-height: 1.8;
+
+        text-align: left;
+
+        height: calc(100% - 150px);
+
+        max-height: 620px;
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+        scrollbar-width: none;
+    }
+
+
+    #lyricsDisplay::-webkit-scrollbar {
+
+        display: none;
+    }
+
+
+    .lyric-line {
+
+        opacity: 0.45;
+
+        transition: all 0.3s ease;
+
+        padding: 8px 0;
+
+        overflow-wrap: anywhere;
+
+        word-break: break-word;
+    }
+
+
+    .lyric-line.active {
+
+        opacity: 1;
+
+        color: #ffffff;
+
+        font-weight: bold;
+
+        transform: scale(1.05);
+
+        text-shadow:
+            0 0 12px rgba(255,255,255,0.7);
+    }
+
+
+    .lyric-line.passed {
+
+        opacity: 0.7;
+
+        color: #d7f5d0;
+    }
+
+
+    /* ==============================
+       TABLET
+    ============================== */
+
+    @media (max-width: 1000px) {
+
+        body {
+
+            padding-top: 75px;
+        }
+
+
+        .song {
+
+            width: 94%;
+
+            height: 190px;
+
+            min-height: 190px;
+        }
+
+
+        .song .th > img {
+
+            width: 140px;
+
+            height: 140px;
+        }
+
+
+        #title {
+
+            left: 165px;
+
+            font-size: clamp(35px, 6vw, 60px);
+        }
+
+
+        #overview {
+
+            left: 165px;
+
+            top: 85px;
+
+            font-size: 17px;
+        }
+
+
+        #playbutton {
+
+            right: 15px;
+
+            top: 15px;
+        }
+
+
+        #progress {
+
+            right: 20px;
+
+            width: 70%;
+        }
+
+
+        .song1 {
+
+            width: 90%;
+
+            min-height: 750px;
+
+            height: 750px;
+        }
+    }
+
+
+    /* ==============================
+       MOBILE
+    ============================== */
+
+    @media (max-width: 700px) {
+
+        body {
+
+            padding-top: 70px;
+
+            padding-left: 5px;
+
+            padding-right: 5px;
+        }
+
+
+        /* NAVBAR */
+
+        nav {
+
+            min-height: 55px;
+
+            padding: 5px 10px;
+        }
+
+
+        nav ul li a {
+
+            padding: 8px 5px;
+        }
+
+
+        nav ul li a b {
+
+            font-size: 22px;
+        }
+
+
+        #profile {
+
+            width: 40px;
+
+            height: 40px;
+        }
+
+
+        .dropdown-content {
+
+            top: 48px;
+
+            right: 0;
+
+            min-width: 145px;
+        }
+
+
+        .dropdown-content a {
+
+            padding: 10px 12px;
+
+            font-size: 14px;
+        }
+
+
+        /* SONG CARD */
+
+        .song {
+
+            width: 96%;
+
+            height: auto;
+
+            min-height: 220px;
+
+            margin: 10px auto 80px;
+
+            padding: 15px;
+
+            border-radius: 15px;
+        }
+
+
+        .tab {
+
+            min-height: 190px;
+        }
+
+
+        .song .th > img {
+
+            width: 110px;
+
+            height: 110px;
+        }
+
+
+        #title {
+
+            left: 125px;
+
+            top: 10px;
+
+            font-size: clamp(28px, 8vw, 45px);
+
+            white-space: normal;
+
+            max-width: calc(100% - 170px);
+        }
+
+
+        #overview {
+
+            left: 125px;
+
+            top: 55px;
+
+            font-size: 13px;
+
+            white-space: normal;
+
+            max-width: calc(100% - 170px);
+        }
+
+
+        #playbutton {
+
+            width: 65px;
+
+            height: 65px;
+
+            right: 15px;
+
+            top: 3px;
+        }
+
+
+        #progress {
+
+            bottom: 10px;
+
+            left: 125px;
+
+            right: auto;
+
+            width: calc(100% - 145px);
+
+            max-width: none;
+        }
+
+
+        /* LYRICS CARD */
+
+        .song1 {
+
+            width: 96%;
+
+            min-height: 600px;
+
+            height: 600px;
+
+            margin: 0 auto 50px;
+
+            padding: 15px;
+
+            border-radius: 15px;
+        }
+
+
+        #Lyrics {
+
+            top: 5px;
+
+            left: 10px;
+
+            font-size: 28px;
+        }
+
+
+        #Title {
+
+            top: 50px;
+
+            left: 20px;
+
+            font-size: 20px;
+        }
+
+
+        #lyricsDisplay {
+
+            top: 95px;
+
+            left: 0;
+
+            width: 100%;
+
+            height: calc(100% - 105px);
+
+            max-height: none;
+
+            padding: 20px 10px;
+
+            font-size: clamp(
+                13px,
+                3.5vw,
+                17px
+            );
+
+            line-height: 1.7;
+        }
+
+
+        .lyric-line {
+
+            padding: 6px 0;
+        }
+
+
+        .lyric-line.active {
+
+            transform: scale(1.02);
+        }
+
+    }
+
+
+    /* ==============================
+       SMALL MOBILE
+    ============================== */
+
+    @media (max-width: 450px) {
+
+        nav ul li a b {
+
+            font-size: 19px;
+        }
+
+
+        #profile {
+
+            width: 36px;
+
+            height: 36px;
+        }
+
+
+        .song {
+
+            width: 98%;
+
+            min-height: 205px;
+
+            padding: 12px;
+        }
+
+
+        .song .th > img {
+
+            width: 90px;
+
+            height: 90px;
+        }
+
+
+        #title {
+
+            left: 105px;
+
+            top: 5px;
+
+            font-size: clamp(
+                24px,
+                8vw,
+                35px
+            );
+
+            max-width: calc(100% - 130px);
+        }
+
+
+        #overview {
+
+            left: 105px;
+
+            top: 50px;
+
+            font-size: 11px;
+
+            max-width: calc(100% - 125px);
+        }
+
+
+        #playbutton {
+
+            width: 55px;
+
+            height: 55px;
+
+            right: 10px;
+
+            top: 95px;
+        }
+
+
+        #progress {
+
+            left: 105px;
+
+            bottom: 10px;
+
+            width: calc(100% - 115px);
+        }
+
+
+        .song1 {
+
+            width: 98%;
+
+            min-height: 550px;
+
+            height: 550px;
+
+            padding: 12px;
+        }
+
+
+        #Lyrics {
+
+            font-size: 25px;
+
+            left: 5px;
+        }
+
+
+        #Title {
+
+            font-size: 18px;
+
+            left: 15px;
+
+            top: 45px;
+        }
+
+
+        #lyricsDisplay {
+
+            top: 85px;
+
+            height: calc(100% - 95px);
+
+            padding: 15px 5px;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .lyric-line {
+
+            padding: 5px 0;
+        }
+
+    }
+
+
+    /* ==============================
+       VERY SMALL PHONES
+    ============================== */
+
+    @media (max-width: 350px) {
+
+        nav ul li a b {
+
+            font-size: 17px;
+        }
+
+
+        #profile {
+
+            width: 33px;
+
+            height: 33px;
+        }
+
+
+        .song .th > img {
+
+            width: 80px;
+
+            height: 80px;
+        }
+
+
+        #title {
+
+            left: 95px;
+
+            font-size: 22px;
+
+            max-width: calc(100% - 110px);
+        }
+
+
+        #overview {
+
+            left: 95px;
+
+            top: 52px;
+
+            font-size: 10px;
+        }
+
+
+        #playbutton {
+
+            width: 48px;
+
+            height: 48px;
+
+            top: 28px;
+        }
+
+
+        #progress {
+
+            left: 95px;
+
+            width: calc(100% - 105px);
+        }
+
+
+        #Lyrics {
+
+            font-size: 22px;
+        }
+
+
+        #Title {
+
+            font-size: 16px;
+        }
+
+
+        #lyricsDisplay {
+
+            font-size: 12px;
+
+            padding-left: 2px;
+
+            padding-right: 2px;
+        }
+
+    }
+
+</style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    <font color="white" size="6px">
+                        <b>HerwinLyrics</b>
+                    </font>
+                </a>
+            </li>
+
+        </ul>
+
+
+        <div class="top">
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+
+                    <img
+                        src="herwinlyrics.png"
+                        alt="profile"
+                        id="profile"
+                    >
+
+                </button>
+
+
+                <div class="dropdown-content">
+
+                    <a
+                        class="prof"
+                        onclick="myProfile()"
+                    >
+                        Profile
+                    </a>
+
+                    <a
+                        class="logout"
+                        onclick="myFunction()"
+                    >
+                        Log Out
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <div class="song">
+
+
+        <div class="tab">
+
+
+            <div class="th">
+
+                <img
+                    src="https://files.catbox.moe/k1bd04.png"
+                    height="160"
+                    crossorigin="anonymous"
+                >
+
+
+                <font id="title" color="white">
+
+                    <h1>
+                        Ikaw Lang
+                    </h1>
+
+                </font>
+
+
+                <h2 id="overview">
+
+                    <b>
+                        AI Generated &nbsp;|&nbsp; 2026
+                    </b>
+
+                </h2>
+
+
+                <button id="playbutton">
+                </button>
+
+
+                <audio
+                    id="audioplayer"
+                    src="https://files.catbox.moe/uoigbv.mp3"
+                    preload="metadata" crossorigin="anonymous"
+                >
+                </audio>
+
+
+                <input
+                    type="range"
+                    value="0"
+                    id="progress"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="song1">
+
+
+        <div class="tab">
+
+
+            <div class="th">
+
+
+                <h1 id="Lyrics">
+                    Lyrics
+                </h1>
+
+
+                <h2 id="Title">
+                    Ikaw Lang
+                </h2>
+
+
+                <div
+                    id="lyricsDisplay"
+                    aria-live="polite"
+                >
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+<script>
+
+    const playButton =
+        document.getElementById("playbutton");
+
+    const audioPlayer =
+        document.getElementById("audioplayer");
+
+    const progress =
+        document.getElementById("progress");
+
+    const lyricsDisplay =
+        document.getElementById("lyricsDisplay");
+
+    const playIcon = "play.png";
+
+    const pauseIcon = "pause.png";
+
+
+    const lyricData = [
+
+    { time: 0, text: "" },
+
+    // Verse 1
+    { time: 13, text: "Sa dami ng taong aking nakilala" },
+    { time: 21, text: "Bakit sa'yo puso ko'y nahumaling bigla?" },
+    { time: 28, text: "Hindi ko alam kung saan nagsimula" },
+    { time: 36, text: "Pero bawat araw, ikaw ang hinahanap" },
+
+    // Pre-Chorus
+    { time: 43, text: "Kapag hawak ko ang iyong kamay" },
+    { time: 47, text: "Parang ayokong matapos ang ating sandali" },
+    { time: 51, text: "At kahit anong mangyari sa buhay" },
+    { time: 55, text: "Pipiliin pa rin kita palagi" },
+
+    // Chorus
+    { time: 62, text: "Ikaw lang, ikaw lang ang nais kong makasama" },
+    { time: 66, text: "Sa bawat umaga hanggang sa pagtanda" },
+    { time: 71, text: "Ikaw ang pahinga ng puso kong pagod" },
+    { time: 76, text: "Ang liwanag kapag mundo ko'y malungkot" },
+    { time: 80, text: "Kung may hihilingin man ako sa tadhana" },
+    { time: 84, text: "Sana'y ikaw pa rin sa bawat bukas" },
+    { time: 91, text: "Dahil sa lahat ng taong dumaan" },
+    { time: 96, text: "Ikaw lang ang gusto kong panghawakan" },
+
+    // Instrumental
+    { time: 102, text: "" },
+
+    // Verse 2
+    { time: 103, text: "Hindi man perpekto ang ating kwento" },
+    { time: 110, text: "May mga araw na tayo'y nagkakamali" },
+    { time: 118, text: "Pero sa bawat luha at pagsubok" },
+    { time: 125, text: "Mas lalo kong nakikitang ikaw ang gusto ko" },
+
+    // Pre-Chorus
+    { time: 131, text: "At kung dumating man ang panahon" },
+    { time: 136, text: "Na ang lahat ay tila nagbabago" },
+    { time: 140, text: "Huwag mong kalimutang sa puso ko" },
+    { time: 144, text: "Ikaw ang pipiliin ko" },
+
+    // Chorus
+    { time: 150, text: "Ikaw lang, ikaw lang ang nais kong makasama" },
+    { time: 155, text: "Sa bawat umaga hanggang sa pagtanda" },
+    { time: 161, text: "Ikaw ang pahinga ng puso kong pagod" },
+    { time: 166, text: "Ang liwanag kapag mundo ko'y malungkot" },
+    { time: 170, text: "Kung may hihilingin man ako sa tadhana" },
+    { time: 175, text: "Sana'y ikaw pa rin sa bawat bukas" },
+    { time: 179, text: "Dahil sa lahat ng taong dumaan" },
+    { time: 185, text: "Ikaw lang ang gusto kong panghawakan" },
+
+    // Bridge
+    { time: 192, text: "Kung sakaling mawala ang mga bituin" },
+    { time: 196, text: "At ang mundo'y tuluyang magdilim" },
+    { time: 200, text: "Hahanapin pa rin kita sa dilim" },
+    { time: 204, text: "Dahil puso ko'y sa'yo lamang uuwi" },
+
+    // Final Chorus
+    { time: 211, text: "Ikaw lang, ikaw lang hanggang sa huli" },
+    { time: 215, text: "Kahit ilang taon pa ang lumipas sa atin" },
+    { time: 220, text: "Sa bawat tibok nitong puso ko" },
+    { time: 226, text: "Pangalan mo ang laging naririnig nito" },
+    { time: 230, text: "At kung ang bukas ay hindi natin alam" },
+    { time: 233, text: "Basta't kasama ka, hindi ako matatakot" },
+    { time: 240, text: "Sa dulo ng lahat ng ating paglalakbay" },
+    { time: 247, text: "Ikaw pa rin ang aking mamahalin" },
+
+    // Outro
+    { time: 256, text: "Ikaw lang..." },
+    { time: 263, text: "Mula ngayon hanggang sa habang-buhay" },
+    { time: 270, text: "Ikaw lang" },
+    { time: 278, text: "Mula ngayon hanggang sa habang-buhay" },
+    { time: 285, text: "Ikaw lang" },
+    { time: 292, text: "Mula ngayon hanggang sa habang-buhay" },
+    { time: 300, text: "Ikaw lang" },
+];
+
+
+    lyricsDisplay.innerHTML = lyricData
+
+        .map(
+            (lyric, index) =>
+            `<div class="lyric-line" data-index="${index}">${lyric.text}</div>`
+        )
+
+        .join("");
+
+
+    function updateLyrics() {
+
+        const currentTime =
+            audioPlayer.currentTime;
+
+        const lyricLines =
+            Array.from(
+                document.querySelectorAll(".lyric-line")
+            );
+
+        let activeIndex = 0;
+
+
+        for (
+            let i = 0;
+            i < lyricData.length;
+            i++
+        ) {
+
+            if (
+                currentTime >= lyricData[i].time
+            ) {
+
+                activeIndex = i;
+
+            } else {
+
+                break;
+
+            }
+
+        }
+
+
+        lyricLines.forEach(
+            (line, index) => {
+
+                const isActive =
+                    index === activeIndex;
+
+                const isPassed =
+                    index < activeIndex;
+
+
+                line.classList.toggle(
+                    "active",
+                    isActive
+                );
+
+
+                line.classList.toggle(
+                    "passed",
+                    isPassed && !isActive
+                );
+
+            }
+        );
+
+
+        const activeLine =
+            lyricLines[activeIndex];
+
+
+            if (activeLine) {
+
+        const containerRect =
+            lyricsDisplay.getBoundingClientRect();
+
+        const lineRect =
+            activeLine.getBoundingClientRect();
+
+        const linePosition =
+            lineRect.top -
+            containerRect.top +
+            lyricsDisplay.scrollTop;
+
+        const targetScroll =
+            Math.max(
+                0,
+                linePosition - 50
+            );
+
+        if (
+            Math.abs(
+                lyricsDisplay.scrollTop -
+                targetScroll
+            ) > 8
+        ) {
+
+            lyricsDisplay.scrollTo({
+                top: targetScroll,
+                behavior: "smooth"
+            });
+
+        }
+    }
+
+
+    }
+
+
+    audioPlayer.onloadedmetadata =
+        function () {
+
+            progress.max =
+                audioPlayer.duration;
+
+            progress.value =
+                audioPlayer.currentTime;
+
+        };
+
+
+    audioPlayer.addEventListener(
+        "timeupdate",
+        function () {
+
+            progress.value =
+                audioPlayer.currentTime;
+
+            updateLyrics();
+
+        }
+    );
+
+
+    playButton.addEventListener(
+        "click",
+        function () {
+
+            if (audioPlayer.paused) {
+
+                audioPlayer.play();
+
+                playButton.style.backgroundImage =
+                    `url(${pauseIcon})`;
+
+            } else {
+
+                audioPlayer.pause();
+
+                playButton.style.backgroundImage =
+                    `url(${playIcon})`;
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.code === "Space" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+
+                if (audioPlayer.paused) {
+
+                    audioPlayer.play();
+
+                    playButton.style.backgroundImage =
+                        `url(${pauseIcon})`;
+
+                } else {
+
+                    audioPlayer.pause();
+
+                    playButton.style.backgroundImage =
+                        `url(${playIcon})`;
+
+                }
+
+            }
+
+        }
+    );
+
+
+    progress.addEventListener(
+        "input",
+        function () {
+
+            audioPlayer.currentTime =
+                Number(progress.value);
+
+            updateLyrics();
+
+        }
+    );
+
+
+    audioPlayer.addEventListener(
+        "ended",
+        function () {
+
+            playButton.style.backgroundImage =
+                `url(${playIcon})`;
+
+            window.location.href =
+                "Where I Belong.html";
+
+        }
+    );
+
+</script>
+
+
+
+<script>
+
+    function myFunction(){
+
+        if (
+            confirm("Do you want to log out?") == true
+        ){
+
+            window.location.href =
+                "Login Form.html";
+
+        }
+
+    }
+
+
+    function myProfile(){
+
+        if (
+            confirm("Do you want to go Profile?") == true
+        ){
+
+            window.location.href =
+                "Profile.html";
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
