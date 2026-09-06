@@ -477,7 +477,7 @@ body::after {
         color: white;
 
         margin: 0;
-        font-size: clamp(25px, 6vw, 70px);
+        font-size: clamp(20px, 6vw, 70px);
     }
 
 
@@ -1168,12 +1168,12 @@ body::after {
 
         #title {
 
-            left: 105px;
+            left: 100px;
 
             top: 5px;
 
             font-size: clamp(
-                20px,
+                24px,
                 8vw,
                 35px
             );
@@ -1186,7 +1186,7 @@ body::after {
 
             left: 105px;
 
-            top: 50px;
+            top: 30px;
 
             font-size: 11px;
 
@@ -1196,13 +1196,13 @@ body::after {
 
         #playbutton {
 
-            width: 55px;
+            width: 40px;
 
-            height: 55px;
+            height: 40px;
 
-            right: 10px;
+            right: -3px;
 
-            top: 95px;
+            top:-2px;
         }
 
 
@@ -1210,7 +1210,7 @@ body::after {
 
             left: 105px;
 
-            bottom: 10px;
+            bottom: 25px;
 
             width: calc(100% - 115px);
         }
@@ -1272,7 +1272,7 @@ body::after {
        VERY SMALL PHONES
     ============================== */
 
-    @media (max-width: 350px) {
+    @media (max-width: 300px) {
 
         nav ul li a b {
 
@@ -1303,7 +1303,7 @@ body::after {
 
             left: 95px;
 
-            font-size: 20px;
+            font-size: 22px;
 
             max-width: calc(100% - 110px);
         }
@@ -1325,13 +1325,15 @@ body::after {
 
             height: 48px;
 
-            top: 28px;
+            top: -40px;
         }
 
 
         #progress {
 
             left: 95px;
+            
+            top: 62px;
 
             width: calc(100% - 105px);
         }
@@ -1394,7 +1396,8 @@ body::after {
 @media (max-width: 450px) {
     #audioInfo {
         left: 105px;
-        width: calc(100% - 115px);
+        top: 50px;
+        width: calc(100% - 100  px);
     }
 }
 
@@ -1446,6 +1449,7 @@ body::after {
 @media (max-width: 450px) {
     #beatVisualizer {
         left: 105px;
+        top: 14px;
         width: calc(100% - 115px);
     }
 }
