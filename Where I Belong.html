@@ -1412,7 +1412,7 @@ body::after {
     position: absolute;
     bottom: -1px;
     right: -100px;
-    width: 500px;
+    width: 700px;
     height: 20px;
 
     display: flex;
@@ -1434,7 +1434,7 @@ body::after {
 @media (max-width: 1000px) {
     #beatVisualizer {
         right: -1px;
-        width: 70%;
+        width: calc(100% - 145px);
     }
 }
 
@@ -1448,16 +1448,16 @@ body::after {
 
 @media (max-width: 450px) {
     #beatVisualizer {
-        left: 105px;
+        left: 90px;
         top: 14px;
-        width: calc(100% - 115px);
+        width: calc(100% - 90px);
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 300px) {
     #beatVisualizer {
         left: 95px;
-        width: calc(100% - 105px);
+        width: calc(100% - 80px);
     }
 }
 </style>
