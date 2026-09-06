@@ -112,7 +112,6 @@ body::after {
         transform: translate(200px, 0px) scale(1.3);
     }
 }
-
     /* ==============================
        BASIC RESPONSIVE SETTINGS
     ============================== */
@@ -478,7 +477,7 @@ body::after {
         color: white;
 
         margin: 0;
-        font-size: clamp(25px, 6vw, 70px);
+        font-size: clamp(20px, 6vw, 70px);
     }
 
 
@@ -657,7 +656,7 @@ body::after {
 
         background-image:
             linear-gradient(
-                rgb(133, 127, 116),
+                rgb(19, 9, 9),
                 rgb(0, 0, 0)
             );
 
@@ -843,6 +842,8 @@ body::after {
             height: 190px;
 
             min-height: 190px;
+
+            margin: 0 auto 15px;
         }
 
 
@@ -1185,7 +1186,7 @@ body::after {
 
             left: 105px;
 
-            top: 35px;
+            top: 30px;
 
             font-size: 11px;
 
@@ -1199,17 +1200,17 @@ body::after {
 
             height: 40px;
 
-            right: 3px;
+            right: -3px;
 
-            top: 1px;
+            top:-2px;
         }
 
 
         #progress {
 
-            left: 100px;
+            left: 105px;
 
-            bottom: 20px;
+            bottom: 25px;
 
             width: calc(100% - 115px);
         }
@@ -1287,9 +1288,8 @@ body::after {
 
             height: 33px;
         }
-        .song {
-
-           margin: 0 auto 10px;
+        .song{
+            margin: 0 auto 10px;
         }
 
 
@@ -1327,13 +1327,15 @@ body::after {
 
             height: 48px;
 
-            top: 28px;
+            top: -40px;
         }
 
 
         #progress {
 
             left: 95px;
+            
+            top: 62px;
 
             width: calc(100% - 105px);
         }
@@ -1360,11 +1362,12 @@ body::after {
             padding-right: 2px;
 
             padding-bottom: 100vh;
+            
+
         }
 
-        
     }
-     #audioInfo {
+    #audioInfo {
     position: absolute;
     bottom: -5px;
     right: 170px;
@@ -1399,8 +1402,8 @@ body::after {
 @media (max-width: 450px) {
     #audioInfo {
         left: 105px;
-        top: 60px;
-        width: calc(100% - 115px);
+        top: 50px;
+        width: calc(100% - 100  px);
     }
 }
 
@@ -1415,7 +1418,7 @@ body::after {
     position: absolute;
     bottom: -1px;
     right: -100px;
-    width: 500px;
+    width: 700px;
     height: 20px;
 
     display: flex;
@@ -1427,24 +1430,23 @@ body::after {
 }
 
 #beatVisualizer span {
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
     border-radius: 3px;
-    background: rgb(83, 2, 2);
+    background: linear-gradient(to top, #00e1ff, #030303);
     transition: height 0.08s ease;
 }
 
 @media (max-width: 1000px) {
     #beatVisualizer {
         right: -1px;
-        width: 70%;
+        width: calc(100% - 145px);
     }
 }
 
 @media (max-width: 700px) {
     #beatVisualizer {
         left: 125px;
-        top: 8px;   
         right: auto;
         width: calc(100% - 145px);
     }
@@ -1452,18 +1454,18 @@ body::after {
 
 @media (max-width: 450px) {
     #beatVisualizer {
-        left: 105px;
-        width: calc(100% - 115px);
+        left: 90px;
+        top: 14px;
+        width: calc(100% - 90px);
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 300px) {
     #beatVisualizer {
         left: 95px;
-        width: calc(100% - 105px);
+        width: calc(100% - 80px);
     }
 }
-
 </style>
 
 </head>
@@ -1537,7 +1539,7 @@ body::after {
             <div class="th">
 
                 <img
-                    src="https://files.catbox.moe/wyjjsa.png"
+                    src="https://files.catbox.moe/pmnnsz.png"
                     height="160"
                     crossorigin="anonymous"
                 >
@@ -1546,7 +1548,7 @@ body::after {
                 <font id="title" color="white">
 
                     <h1>
-                        Sa'yo Lang
+                        Where I Belong
                     </h1>
 
                 </font>
@@ -1567,7 +1569,7 @@ body::after {
 
                 <audio
                     id="audioplayer"
-                    src="https://files.catbox.moe/jaxte8.mp3"
+                    src="https://files.catbox.moe/1hxerc.mp3"
                     prelaod="metadata" crossorigin="anonymous"
                 >
                 </audio>
@@ -1578,7 +1580,7 @@ body::after {
                     value="0"
                     id="progress"
                 >
-                  <div id="audioInfo">
+                <div id="audioInfo">
                     <span id="duration">0:00 / 0:00</span>
 
                     <div id="beatVisualizer">
@@ -1614,7 +1616,7 @@ body::after {
 
 
                 <h2 id="Title">
-                    Sa'yo Lang
+                    Where I Belong
                 </h2>
 
 
@@ -1665,118 +1667,79 @@ body::after {
 
 
     const lyricData = [
+    { time: 0, text: "" },
+    // Verse 1
+    { time: 7, text: "I never knew that love could feel this way" },
+    { time: 15, text: "Until you came and changed my every day" },
+    { time: 23, text: "In every smile, in every word you say" },
+    { time: 32, text: "You make the darkness slowly fade away" },
 
-        { time: 0, text: "" },
+    // Pre-Chorus
+    { time: 41, text: "And when the world gets heavy on my heart" },
+    { time: 45, text: "You're the one who keeps me from falling apart" },
+    { time: 49, text: "No matter where this life may lead us to" },
+    { time: 54, text: "I'll always find my way back to you" },
 
-        { time: 17, text: "Tuwing umaga, ikaw ang naiisip ko" },
+    // Chorus
+    { time: 60, text: "You are the place where I belong" },
+    { time: 66, text: "The quiet in my heart, the rhythm in my song" },
+    { time: 70, text: "Through every storm, through every night" },
+    { time: 74, text: "You're the reason everything feels right" },
+    { time: 80, text: "If I could choose a thousand times" },
+    { time: 84, text: "I'd choose your hand to hold in mine" },
+    { time: 88, text: "No matter where tomorrow goes" },
+    { time: 92, text: "With you is where I want to go" },
 
-        { time: 21, text: "Sa simpleng ngiti mo, puso ko'y sumisilip" },
+    // Instrumental
+    { time: 99, text: "" },
 
-        { time: 25, text: "Kahit walang sabihin, sapat nang kapiling ka" },
+    // Verse 2
+    { time: 100, text: "I don't need a perfect life or perfect skies" },
+    { time: 109, text: "Just your hand in mine and your eyes in my eyes" },
+    { time: 116, text: "We'll have our days when everything goes wrong" },
+    { time: 124, text: "But I'll stay beside you and keep holding on" },
 
-        { time: 29, text: "Dahil sa piling mo, kumpleto na ang mundo ko" },
+    // Pre-Chorus
+    { time: 132, text: "And if the years begin to change our lives" },
+    { time: 139, text: "I'll still see the same love in your eyes" },
+    { time: 143, text: "Through every season, every road we take" },
+    { time: 148, text: "You're the promise I will never break" },
 
-        { time: 32, text: "Sa bawat kwento ng araw na lumilipas" },
+    // Chorus
+    { time: 154, text: "You are the place where I belong" },
+    { time: 160, text: "The quiet in my heart, the rhythm in my song" },
+    { time: 163, text: "Through every storm, through every night" },
+    { time: 169, text: "You're the reason everything feels right" },
+    { time: 174, text: "If I could choose a thousand times" },
+    { time: 178, text: "I'd choose your hand to hold in mine" },
+    { time: 182, text: "No matter where tomorrow goes" },
+    { time: 187, text: "With you is where I want to go" },
 
-        { time: 36, text: "Ikaw ang gusto kong makasama hanggang bukas" },
+    // Bridge
+    { time: 193, text: "And when our hair turns silver and gray" },
+    { time: 198, text: "I'll love you just like I do today" },
+    { time: 203, text: "If time could give me one more chance" },
+    { time: 207, text: "I'd find you again and fall in love again" },
 
-        { time: 40, text: "Hindi kailangan ng mamahaling bagay" },
+    // Final Chorus
+    { time: 215, text: "You are the place where I belong" },
+    { time: 222, text: "The sweetest part of every song" },
+    { time: 226, text: "Through every tear, through every smile" },
+    { time: 230, text: "I'd walk with you another mile" },
+    { time: 234, text: "If forever is a road we know" },
+    { time: 239, text: "Then take my hand and let's just go" },
+    { time: 243, text: "No matter where tomorrow flows" },
+    { time: 248, text: "With you is where my heart calls home" },
 
-        { time: 43, text: "Basta't ikaw ang katabi ko habang buhay" },
+    // Outro
+    { time: 255, text: "You're not just someone I love" },
+    { time: 259, text: "You're the home I've dreamed of" },
+    { time: 264, text: "And wherever this life may go" },
+    { time: 269, text: "I'll love you more than you'll ever know" },
 
-        { time: 47, text: "At sa bawat sandali na tayo'y magkasama" },
 
-        { time: 51, text: "Parang humihinto ang ikot ng mundo" },
+];
 
-        { time: 54, text: "Kung may isang bagay akong hihilingin" },
-
-        { time: 58, text: "Sana'y ikaw hanggang sa dulo" },
-
-        { time: 63, text: "Sa'yo lang, puso ko'y nahulog" },
-
-        { time: 67, text: "Sa'yo lang, pag-ibig ko'y buo" },
-
-        { time: 71, text: "Ikaw ang dahilan ng aking ngiti" },
-
-        { time: 75, text: "Ang tahanan ng puso kong naghihintay" },
-
-        { time: 78, text: "Kahit saan man tayo dalhin ng panahon" },
-
-        { time: 82, text: "Hawak ang kamay mo, hindi ako susuko" },
-
-        { time: 86, text: "Sa bawat bukas, sa bawat ngayon" },
-
-        { time: 89, text: "Ikaw ang pipiliin ko" },
-
-        { time: 110, text: "Gusto kong kasama ka sa bawat umaga" },
-
-        { time: 113, text: "Kahit simpleng kape lang, basta't ikaw kasama" },
-
-        { time: 117, text: "Kapag pagod ka, ako ang iyong pahinga" },
-
-        { time: 121, text: "Kapag malungkot ka, ako'y nandito sa tabi mo" },
-
-        { time: 125, text: "At kung minsan ay may hindi tayo pagkakaunawaan" },
-
-        { time: 128, text: "Hahayaan nating lumipas, sabay tayong lalaban" },
-
-        { time: 132, text: "Dahil ang mahalaga sa ating dalawa" },
-
-        { time: 135, text: "Ay hindi ang perpekto, kundi ang manatili tayo" },
-
-        { time: 139, text: "Hindi ko man kayang ibigay ang mundo" },
-
-        { time: 143, text: "Ibibigay ko naman ang puso ko sa'yo" },
-
-        { time: 146, text: "At habang may bukas na naghihintay" },
-
-        { time: 150, text: "Mamahalin kita nang walang katapusan" },
-
-        { time: 155, text: "Sa'yo lang, puso ko'y nahulog" },
-
-        { time: 159, text: "Sa'yo lang, pag-ibig ko'y buo" },
-
-        { time: 163, text: "Ikaw ang dahilan ng aking ngiti" },
-
-        { time: 167, text: "Ang tahanan ng puso kong naghihintay" },
-
-        { time: 171, text: "Kahit saan man tayo dalhin ng panahon" },
-
-        { time: 174, text: "Hawak ang kamay mo, hindi ako susuko" },
-
-        { time: 178, text: "Sa bawat bukas, sa bawat ngayon" },
-
-        { time: 182, text: "Ikaw ang pipiliin ko" },
-
-        { time: 186, text: "Kung dumating ang araw na tayo'y matanda na" },
-
-        { time: 189, text: "Sana hawak ko pa rin ang kamay mo" },
-
-        { time: 193, text: "At sa bawat kwentong ating babalikan" },
-
-        { time: 196.5, text: "Masasabi kong ikaw ang pinakamagandang desisyon" },
-
-        { time: 203, text: "Sa'yo lang, puso ko'y mananatili" },
-
-        { time: 207, text: "Sa'yo lang, hanggang sa huling sandali" },
-
-        { time: 211, text: "Ikaw ang pangarap na naging totoo" },
-
-        { time: 215, text: "Ang biyayang hindi ko kailanman bibitawan" },
-
-        { time: 218, text: "Kahit ilang taon pa ang lumipas" },
-
-        { time: 222, text: "Ikaw pa rin ang gusto kong kasama" },
-
-        { time: 226, text: "Sa bawat tibok ng puso kong ito" },
-
-        { time: 230, text: "Ikaw lang, ikaw lang ang mahal ko" },
-
-        { time: 239, text: "Ikaw lang, ikaw lang ang mahal" },
-
-        { time: 243, text: "Ikaw lang, ikaw lang ang mahal" },
-
-    ];
 
 
     lyricsDisplay.innerHTML = lyricData
@@ -1852,40 +1815,39 @@ body::after {
             lyricLines[activeIndex];
 
 
-            if (activeLine) {
+        if (activeLine) {
 
-        const containerRect =
-            lyricsDisplay.getBoundingClientRect();
+    const containerRect =
+        lyricsDisplay.getBoundingClientRect();
 
-        const lineRect =
-            activeLine.getBoundingClientRect();
+    const lineRect =
+        activeLine.getBoundingClientRect();
 
-        const linePosition =
-            lineRect.top -
-            containerRect.top +
-            lyricsDisplay.scrollTop;
+    const linePosition =
+        lineRect.top -
+        containerRect.top +
+        lyricsDisplay.scrollTop;
 
-        const targetScroll =
-            Math.max(
-                0,
-                linePosition - 50
-            );
+    const targetScroll =
+        Math.max(
+            0,
+            linePosition - 50
+        );
 
-        if (
-            Math.abs(
-                lyricsDisplay.scrollTop -
-                targetScroll
-            ) > 8
-        ) {
+    if (
+        Math.abs(
+            lyricsDisplay.scrollTop -
+            targetScroll
+        ) > 8
+    ) {
 
-            lyricsDisplay.scrollTo({
-                top: targetScroll,
-                behavior: "smooth"
-            });
+        lyricsDisplay.scrollTo({
+            top: targetScroll,
+            behavior: "smooth"
+        });
 
-        }
     }
-
+}
 
     }
 
@@ -1900,7 +1862,7 @@ body::after {
                 audioPlayer.currentTime;
 
             durationDisplay.textContent =
-                `0:00 / ${formatTime(audioPlayer.duration)}`;
+        `0:00 / ${formatTime(audioPlayer.duration)}`;
 
         };
 
@@ -1913,7 +1875,7 @@ body::after {
                 audioPlayer.currentTime;
 
             durationDisplay.textContent =
-                `${formatTime(audioPlayer.currentTime)} / ${formatTime(audioPlayer.duration)}`;
+                 `${formatTime(audioPlayer.currentTime)} / ${formatTime(audioPlayer.duration)}`;
 
             updateLyrics();
 
@@ -1964,10 +1926,11 @@ body::after {
                 if (audioPlayer.paused) {
 
                     audioPlayer.play();
+
                     setupBeatSync();
-                     if (audioContext && audioContext.state === "suspended") {
-                        audioContext.resume();
-                    }
+                        if (audioContext && audioContext.state === "suspended") {
+                            audioContext.resume();
+                        }
 
                     playButton.style.backgroundImage =
                         `url(${pauseIcon})`;
@@ -2008,12 +1971,12 @@ body::after {
                 `url(${playIcon})`;
 
             window.location.href =
-                "Where I Belong.html";
+                "Ikaw Lang.html";
 
         }
     );
 
-    let audioContext;
+let audioContext;
 let analyser;
 let source;
 let beatReady = false;
@@ -2077,6 +2040,7 @@ function detectBeat() {
 
     analyze();
 }
+    
 
 </script>
 
